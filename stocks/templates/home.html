@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title> Stock Market </title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"> Stocks </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/stocks/ "> Home </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/stocks/add-stock/">Add Stock</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <button class="btn btn-outline-success" type="submit">Logout</button>
+              <p>Welcome,{{ user.username }}</p>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+
+    <main>
+      <div class="container">
+          {% if messages %}
+            <ul class="messages">
+              {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+            <h1>Stock Market</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Market Overview</h2>
+                    <!-- Market Overview Chart -->
+
+                </div>
+                <div class="col-md-6">
+                    <h2>Top Performers</h2>
+                    <!-- Top Performers Table -->
+                </div>
+            </div>
+            <br>
+            <br>
+
+
+            <h1>Stock List</h1>
+            <!-- Display the stocks in a table -->
+            <table border="1" class="table table-success table-striped-columns" >
+                <thead>
+                    <tr>
+                        <th>Stock Name</th>
+                        <th>Stock Price</th>
+                        <th>Market Cap</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stock in stocks %}
+                        <tr>
+                            <td>{{ stock.stockname }}</td>
+                            <td>{{ stock.stockprice }}</td>
+                            <td>{{ stock.mrkcap }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </main>
+
+    <footer class="bg-body-tertiary">
+        <p>💸💸 2021 Stock Market. All rights reserved.</p>
+        <ul>
+
+        </ul>
+        <p>Made with <span class="heart">❤️</span> by DarkForce</p>
+    </footer>
+
+</body>
+</html>
