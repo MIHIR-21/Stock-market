@@ -9,6 +9,8 @@ urlpatterns = [
 
     path('login/', v.login_page, name='login_page'),
 
+    path('logout/', v.logout_page, name='logout_page'),
+
     path('', v.home , name= 'home'),
 
     path('add-stock/', v.add_stock, name ='add_stock'),

@@ -3,10 +3,11 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Add_stocks
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@login_required(login_url='stocks:login_page')
 def home(request):
-    
     stocks = Add_stocks.objects.all()
     context = {'stocks': stocks}
     return render(request, 'home.html', context)
@@ -27,6 +28,12 @@ def login_page(request):
             messages.info(request, 'Username or Password is incorrect')
 
     return render(request, 'login.html')
+
+def logout_page(request):
+    print("hello")
+    logout(request)
+    messages.info(request, 'You have successfully logged out!')
+    return redirect('stocks:login_page')
 
 def register_page(request):
     if request.method == 'POST':
